@@ -10,7 +10,7 @@ import {
 import React, { useState } from 'react';
 import Loading from '../components/Loading';
 
-const LoginPage = ({navigation}) => {
+const LoginPage = ({ navigation }) => {
 
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -19,49 +19,37 @@ const LoginPage = ({navigation}) => {
     return (
         <View style={styles.container}>
 
+            <Text style={styles.welcome}>Welcome back!</Text>
+
             <Image
                 source={require('../../assets/images/user.png')}
                 style={styles.userImage}
             />
 
-            <Text style={styles.welcome}>Welcome</Text>
+            <View style={styles.inputContainer}>
+                <Text style={styles.inputBoxText} >Email</Text>
+                <TextInput
+                    inputMode='email'
+                    placeholder='Enter your email'
+                    style={styles.TextInputStyle}
+                    onChangeText={setName}
+                    value={name}
+                />
 
-            <Text>Email</Text>
-            <TextInput
-                inputMode='email'
-                placeholder='Enter your email'
-                style={styles.TextInputStyle}
-                onChangeText={setName}
-                value={name}
-            />
-
-            <Text>Password</Text>
-            <TextInput
-                secureTextEntry={true}
-                placeholder='Enter your password'
-                style={styles.TextInputStyle}
-                onChangeText={setLastName}
-                value={lastName}
-            />
+                <Text style={styles.inputBoxText} >Password</Text>
+                <TextInput
+                    secureTextEntry={true}
+                    placeholder='Enter your password'
+                    style={styles.TextInputStyle}
+                    onChangeText={setLastName}
+                    value={lastName}
+                />
+            </View>
 
             <Pressable
                 onPress={() => setIsLoading(true)}
-                style={({ pressed }) => [{
-
-                    backgroundColor: pressed ? "lightgray" : "lightblue"
-
-                }, styles.loginButton]}>
-                <Text>Login</Text>
-            </Pressable>
-
-            <Pressable
-                onPress={() => navigation.navigate('SignUp')}
-                style={({ pressed }) => [{
-
-                    backgroundColor: pressed ? "lightblue" : "lightgray"
-
-                }, styles.signupButton]}>
-                <Text>SignUp</Text>
+                style={ styles.loginButton }>
+                <Text style= {styles.loginText}>Login</Text>
             </Pressable>
 
             {isLoading
@@ -83,20 +71,28 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    TextInputStyle: {
-        borderWidth: 1,
-        borderRadius: 7,
-        width: '80%',
-        height: 40,
-        marginVertical: 12,
-        textAlign: 'center'
-
+    inputBoxText: {
+        fontWeight: 'bold',
     },
 
+    inputContainer: {
+        width: '80%',
+    },
+
+    TextInputStyle: {
+        borderWidth: 0.2,
+        borderRadius: 7,
+        width: '100%',
+        height: 50,
+        marginVertical: 12,
+        textAlign: 'center',
+        backgroundColor: '#F7F8F9'
+    },
 
     userImage: {
         width: 100,
-        height: 100
+        height: 100,
+        marginVertical: 12
     },
 
     welcome: {
@@ -106,21 +102,21 @@ const styles = StyleSheet.create({
     },
 
     loginButton: {
-        width: "50%",
-        height: 40,
+        width: "70%",
+        height: 50,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 15,
+        borderRadius: 8,
+        marginTop: 20,
+        borderWidth: 1,
+        backgroundColor: 'black'
     },
 
-    signupButton: {
-        width: "30%",
-        height: 40,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 15,
-        marginTop: 20
-    }
+    loginText: {
+        fontSize: 15,
+        fontWeight: '500',
+        color: 'white'
+    },
 
 });
 
