@@ -17,7 +17,7 @@ const LoginPage = () => {
     return (
         <View style={styles.container}>
 
-            <Text style={styles.welcome}>Welcome back!</Text>
+            <Text style={styles.loginTitle}>Welcome back!</Text>
 
             <Image
                 source={require('../../assets/images/user.png')}
@@ -26,14 +26,14 @@ const LoginPage = () => {
 
             <CustomTextInput
                 title='Email'
-                placeholder='Enter your Email'
+                placeholder='Enter your email'
                 isSecureText={false}
                 onChangeText={setEmail}
                 value={email}
             />
             <CustomTextInput
                 title='Password'
-                placeholder='Enter your Password'
+                placeholder='Enter your password'
                 isSecureText={true}
                 onChangeText={setPassword}
                 value={password}
@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
         marginVertical: 12
     },
 
-    welcome: {
+    loginTitle: {
         fontWeight: 'bold',
         fontSize: 20,
         marginVertical: 20
-    },
+    }
 
 });
